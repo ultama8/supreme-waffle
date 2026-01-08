@@ -6,7 +6,7 @@ from player import *
 
 pygame.init()
 
-font = pygame.font.SysFont("oldenglishtext", 32)
+font = pygame.font.SysFont("timesnewroman", 32)
 screen_info = pygame.display.Info()
 size = (width, height)=(screen_info.current_w, screen_info.current_h)
 screen = pygame.display.set_mode(size)
@@ -73,10 +73,14 @@ def main():
         screen.fill(color)
         current_level.draw(screen)
         current_level.update(change_level)
-        text = font.render(f"({player.rect.center})", True, (230,230,230))
+        text = font.render(f"{player.rect.center}", True, (230,230,230))
         text_rect = text.get_rect()
         text_rect.topright = (width, 0)
         screen.blit(text, text_rect)
+        text2 = font.render(f"Health: {player.health}", True, (230,230,230))
+        text_rect2 = text2.get_rect()
+        text_rect2.topright = (width - 5, 50)
+        screen.blit(text2, text_rect2)
         pygame.display.flip()
 
 if __name__ == "__main__":
