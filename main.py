@@ -63,13 +63,13 @@ def main():
                     player.upLevel(current_level)
         keys = pygame.key.get_pressed()
         if keys[K_w]:
-            player.changey(-5)
+            player.changey(-2)
         if keys[K_s]:
-            player.changey(5)
+            player.changey(2)
         if keys[K_d]:
-            player.changex(5)
+            player.changex(2)
         if keys[K_a]:
-            player.changex(-5)
+            player.changex(-2)
         screen.fill(color)
         current_level.draw(screen)
         current_level.update(change_level)
