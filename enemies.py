@@ -1,5 +1,8 @@
 import pygame, random
 
+screen_info = pygame.display.Info()
+size = (width, height)=(screen_info.current_w, screen_info.current_h)
+
 class Enemies(pygame.sprite.Sprite):
     def __init__(self, path, pos, level):
         super().__init__()
@@ -16,3 +19,11 @@ class Enemies(pygame.sprite.Sprite):
     def update(self):
         if pygame.sprite.collide_rect(self, self.level.player):
             self.level.player.defend(self.atk)
+        if self.rect.centery < 0:
+            self.rect.centery = height/2
+        elif self.rect.centery > height:
+            self.rect.centery = height/2
+        if self.rect.centerx < 0:
+            self.rect.centerx = width/2
+        elif self.rect.centerx > width:
+            self.rect.centerx = width/2
