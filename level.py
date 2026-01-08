@@ -1,5 +1,6 @@
 import pygame, random
 from tiles import *
+from enemies import *
 
 class Level(pygame.sprite.Sprite):
     def __init__(self, player):
@@ -83,3 +84,6 @@ class randomLevel(Level):
                 elif gamemap[y][x] == "e":
                     self.exit = Tile((x*32, y*32), "images/tiles/door21.gif")
                     self.floors.add(self.exit)
+        for y in range(3):
+            e = Enemies("images/monsters/bat.gif", random.choice(self.floors.sprites()).rect.center, self)
+            self.enemies.add(e)
