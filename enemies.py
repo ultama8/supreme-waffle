@@ -18,12 +18,12 @@ class Enemies(pygame.sprite.Sprite):
         self.health = 30
         self.atk = 5
         self.defence = 2
-        self.reload = 20
+        self.reload = 35
     def update(self):
         if pygame.sprite.collide_rect(self, self.level.player):
             self.reload -=1
             if self.reload == 0:
-                self.reload = 20
+                self.reload = 35
                 self.level.player.defend(self.atk)
         self.rect.move_ip(self.movement)
         self.movement = [0,0]
