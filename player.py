@@ -27,7 +27,7 @@ class Player(pygame.sprite.Sprite):
         self.movement = [0,0]
     
     def defend(self, base_damage):
-        if self.health >= 0:
+        if self.health <= 0:
             sys.exit()
         damage = base_damage / (self.defence * self.ac)
         self.health -= damage
