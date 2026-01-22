@@ -15,9 +15,9 @@ class Level(pygame.sprite.Sprite):
         self.exit = None
      
     def draw(self, screen):
-        self.enemies.draw(screen)
         self.walls.draw(screen)
         self.floors.draw(screen)
+        self.enemies.draw(screen)
         self.player.draw(screen)
 
     def update(self, callback):
@@ -86,4 +86,5 @@ class randomLevel(Level):
                     self.floors.add(self.exit)
         for y in range(3):
             e = Enemies("images/monsters/bat.gif", random.choice(self.floors.sprites()).rect.center, self)
+            print("test1")
             self.enemies.add(e)
