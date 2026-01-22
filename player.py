@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, math
 from level import *
 
 pygame.init()
@@ -30,7 +30,7 @@ class Player(pygame.sprite.Sprite):
         if self.health <= 0:
             sys.exit()
         damage = base_damage / (self.defence * self.ac)
-        self.health -= damage
+        self.health -= math.floor(damage)
 
     def upLevel(self, level):
         self.movement = [0,0]
