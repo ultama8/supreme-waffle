@@ -1,4 +1,4 @@
-import pygame, random
+import pygame, random, math
 
 pygame.init()
 
@@ -70,3 +70,17 @@ class Enemies(pygame.sprite.Sprite):
             self.rect.centerx = width/2
         elif self.rect.centerx > width:
             self.rect.centerx = width/2
+    
+    def defend(self, base_damage, hit_type, fire_duration):
+        if hit_type == "Normal":
+            damage = base_damage / self.defence
+            self.health -= math.floor(damage)
+        if hit_type == "Fire":
+            fire_counter = fire_duration * 2
+            if fire_counter > 0:
+                damage = (base_damage / self.defence) + 5
+                self.health -= math.floor(damage)
+                fire_counter -= 1
+            else:
+                damage = base_damage / self.defence
+                self.health -= math.floor(damage)
