@@ -14,11 +14,13 @@ class Enemies(pygame.sprite.Sprite):
         self.movement = pygame.math.Vector2(0, 5)
         self.movement.rotate_ip(random.randint(0, 359))
         self.level = level
-        self.counter = 30
-        self.counter2 = 30
+        self.counter = 35
+        self.counter2 = 3
         self.min_distance = 50
         self.health = 30
         self.atk = 5
+        self.rand = 0
+        self.rand2 = 0
         self.defence = 2
         self.reload = 35
     def update(self):
@@ -46,20 +48,26 @@ class Enemies(pygame.sprite.Sprite):
         else:
             temp_move = self.movement
             if self.counter2 <= 0:
-                rand = random.randint(-2, 2)
-                rand2 = random.randint(-2, 2)
-                temp_move[0] = rand
-                temp_move[1] = rand2
-                self.counter2 = random.randint(10, 30)
+                self.rand = random.randint(-2, 2)
+                self.rand2 = random.randint(-2, 2)
+                temp_move[0] = self.rand
+                temp_move[1] = self.rand2
+                self.counter2 = random.randint(3, 6)
             else:
                 self.counter2 -= 1
+                if (self.counter2 % 6) > 0:
+                    pass
+                else:
+                    temp_move[0] = self.rand
+                    temp_move[1] = self.rand2
             
             self.movement = temp_move
             if self.counter <= 0:
                 self.movement.rotate_ip(random.randint(0, 360))
-                self.counter = random.randint(10, 50)
+                self.counter = random.randint(25, 45)
             else:
                 self.counter -= 1
+
         self.rect.move_ip(self.movement)
         self.movement = pygame.math.Vector2(0, 0)
         if self.rect.centery < 0:
