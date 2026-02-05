@@ -55,7 +55,7 @@ class Enemies(pygame.sprite.Sprite):
                 self.counter2 = random.randint(3, 6)
             else:
                 self.counter2 -= 1
-                if (self.counter2 % 6) > 0:
+                if (self.counter2 % 5) > 0:
                     pass
                 else:
                     temp_move[0] = self.rand
