@@ -16,14 +16,16 @@ class Player(pygame.sprite.Sprite):
         self.ac = 1
     
     def update(self, callback):
+        self.rect.move_ip(self.movement)
         if len(pygame.sprite.spritecollide(self, self.level.walls, dokill = False)) >= 1:
             if pygame.sprite.collide_rect(self, self.level.exit):
                 callback(1)
             if pygame.sprite.collide_rect(self, self.level.entrance):
                 callback(-1)
-            self.movement[0] *= -1
-            self.movement[1] *= -1
-        self.rect.move_ip(self.movement)
+            else:
+                self.movement[0] *= -1
+                self.movement[1] *= -1
+                self.rect.move_ip(self.movement)
         self.movement = [0,0]
     
     def defend(self, base_damage):
